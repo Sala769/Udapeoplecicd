@@ -3,7 +3,7 @@ Description: >
 
 Parameters:
   ID:
-    Description: Unique identifiers
+    Description: Unique identifiers another.
     Type: String
 
 Resources:
