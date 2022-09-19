@@ -1,8 +1,6 @@
 ---
 - name: "deployment play." 
   hosts: web
-  become: true
-  become_method: sudo
   remote_user: ubuntu
   gather_facts: false
   vars:
