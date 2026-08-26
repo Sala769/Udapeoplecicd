@@ -1,0 +1,10 @@
+{
+  "environmentUrl": "https://YOUR_ENVIRONMENT_ID.apps.dynatrace.com",
+  "app": {
+    "id": "com.udapeople.standardshub",
+    "name": "UdaPeople Standards Hub",
+    "description": "Architectural standards, grouped by tower, with Dynatrace build guidance",
+    "version": "0.1.0",
+    "scopes": []
+  }
+}

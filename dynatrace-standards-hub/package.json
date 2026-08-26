@@ -1,0 +1,53 @@
+{
+  "name": "udapeople-standards-hub",
+  "version": "0.1.0",
+  "description": "Dynatrace custom app: the UdaPeople Control Tower for architectural standards, grouped by domain, with step-by-step guidance for building the matching Dynatrace monitor for each one.",
+  "scripts": {
+    "build": "dt-app build",
+    "start": "dt-app dev",
+    "deploy": "dt-app deploy",
+    "uninstall": "dt-app uninstall",
+    "update": "dt-app update",
+    "info": "dt-app info",
+    "help": "dt-app help",
+    "lint": "eslint ."
+  },
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@dynatrace-sdk/app-environment": "^1.1.4",
+    "@dynatrace-sdk/client-query": "^1.26.0",
+    "@dynatrace-sdk/error-handlers": "^1.3.1",
+    "@dynatrace-sdk/navigation": "^2.3.0",
+    "@dynatrace-sdk/react-hooks": "^1.14.2",
+    "@dynatrace-sdk/user-preferences": "^1.1.4",
+    "@dynatrace/strato-components": "^3.10.4",
+    "@dynatrace/strato-design-tokens": "^1.5.2",
+    "@dynatrace/strato-icons": "^2.4.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-is": "^18.3.1",
+    "react-intl": "^6.8.9",
+    "react-router-dom": "^6.30.4"
+  },
+  "overrides": {
+    "eslint-plugin-react": {
+      "eslint": "^10.0.0"
+    }
+  },
+  "devDependencies": {
+    "dt-app": "^1.8.1",
+    "@eslint/js": "^10.0.0",
+    "@types/node": "^24.13.3",
+    "@types/react": "^18.3.31",
+    "@types/react-dom": "^18.3.7",
+    "eslint": "^10.0.0",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.66.0"
+  }
+}
