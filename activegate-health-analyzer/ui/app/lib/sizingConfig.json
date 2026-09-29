@@ -1,0 +1,27 @@
+{
+  "source": "https://docs.dynatrace.com/docs/ingest-from/dynatrace-activegate/capacity-planning-and-sizing",
+  "note": "Verify against the current Dynatrace ActiveGate hardware/sizing docs for the tenant's release. These values are configuration, not logic: edit and redeploy, or update through app settings.",
+  "minHeapMb": 1024,
+  "minCpuCores": 2,
+  "minMemoryGb": 4,
+  "heapHighPct": 90,
+  "heapSustainedPct": 95,
+  "cpuHighPct": 80,
+  "xmsToXmxGapRatio": 4,
+  "deprecatedModules": [
+    "vmware",
+    "azure",
+    "db insights",
+    "dbinsights",
+    "aws",
+    "memory dump",
+    "memorydump",
+    "cloud foundry",
+    "cloudfoundry"
+  ],
+  "docs": [
+    { "label": "ActiveGate documentation", "url": "https://docs.dynatrace.com/docs/ingest-from/dynatrace-activegate" },
+    { "label": "ActiveGate sizing", "url": "https://docs.dynatrace.com/docs/ingest-from/dynatrace-activegate/capacity-planning-and-sizing" },
+    { "label": "Dynatrace Community", "url": "https://community.dynatrace.com" }
+  ]
+}

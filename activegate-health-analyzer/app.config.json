@@ -1,0 +1,15 @@
+{
+  "$schema": "./.dt-app/app.config.schema.json",
+  "environmentUrl": "https://example.apps.dynatrace.com/",
+  "app": {
+    "name": "ActiveGate Health Analyzer",
+    "version": "0.0.1",
+    "description": "Analyze an ActiveGate support archive against live Grail data and a known-issues KB",
+    "id": "my.activegate.health.analyzer",
+    "scopes": [
+      { "name": "storage:logs:read", "comment": "Fetch ActiveGate logs for DQL follow-ups" },
+      { "name": "storage:metrics:read", "comment": "Read dsfm:active_gate.* self-monitoring metrics" },
+      { "name": "storage:entities:read", "comment": "Resolve the ActiveGate entity ID from the archive hostname" }
+    ]
+  }
+}

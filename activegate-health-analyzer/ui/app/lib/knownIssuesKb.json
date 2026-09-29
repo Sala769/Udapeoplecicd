@@ -1,0 +1,83 @@
+[
+  {
+    "id": "x86-64-v3",
+    "title": "Container fails on CPU without x86-64-v3",
+    "pattern": "CPU does not support x86-64-v3",
+    "severity": "critical",
+    "rootCause": "The ActiveGate container image moved to a RHEL UBI 10 micro base (Sprint 345), which requires x86-64-v3.",
+    "resolution": "Verify the host CPU supports x86-64-v3. If the hardware cannot be upgraded, pin the previous ActiveGate version.",
+    "rfaNeeded": false
+  },
+  {
+    "id": "no-init-script",
+    "title": "No systemd or SystemV init script found",
+    "pattern": "Neither systemd nor SystemV initialization script found",
+    "severity": "critical",
+    "rootCause": "Init script or service registration is missing or corrupted (seen on RHEL 9.8).",
+    "resolution": "Recheck the dynatracegateway.service unit. A manual reinstall may be required.",
+    "rfaNeeded": false
+  },
+  {
+    "id": "selinux-runuser",
+    "title": "runuser denied plus SELinux AVC denials after patching",
+    "pattern": "runuser: may not be used by non-root users|avc:\\s+denied",
+    "severity": "critical",
+    "rootCause": "SELinux policy corrupted or misaligned after an RHEL 9 patch and reboot.",
+    "resolution": "Generate an allow module with audit2allow. Verify /opt/dynatrace/gateway ownership survived the patch.",
+    "rfaNeeded": false
+  },
+  {
+    "id": "truststore-override",
+    "title": "PKIX path building failed despite custom truststore",
+    "pattern": "SunCertPathBuilderException|PKIX path building failed",
+    "severity": "warning",
+    "rootCause": "An explicit javax.net.ssl.trustStore system property silently bypasses the Dynatrace custom truststore configuration, even with a correctly imported CA.",
+    "resolution": "Remove the javax.net.ssl.trustStore override and restart. Confirm the log shows the custom certificate configuration being applied.",
+    "rfaNeeded": false
+  },
+  {
+    "id": "cannot-forward",
+    "title": "500 - Cannot forward request (containerized ActiveGate)",
+    "pattern": "Cannot forward request",
+    "severity": "warning",
+    "rootCause": "Known Apache HttpClient 5 forwarding bug (PRISM-5759) on the REST API module of a containerized ActiveGate.",
+    "resolution": "Confirm a direct SaaS call works. Link PRISM-5759; raise an RFA if the symptoms are not an exact match.",
+    "rfaNeeded": true
+  },
+  {
+    "id": "lb-http-client",
+    "title": "HTTP client cannot be created behind a load balancer",
+    "pattern": "HTTP client cannot be created",
+    "severity": "warning",
+    "rootCause": "A load balancer terminating TLS presents its own certificate, SAN or ciphers that the client rejects.",
+    "resolution": "Prefer an L4 passthrough load balancer. If terminating, the client must trust the LB certificate and the LB must re-encrypt to the ActiveGate.",
+    "rfaNeeded": false
+  },
+  {
+    "id": "phase3-deprecated-modules",
+    "title": "Deprecated module blocked on Phase 3 tenant",
+    "pattern": "Tenant phase:\\s*3",
+    "severity": "warning",
+    "rootCause": "Phase 3 tenants block VMware, Azure, DB Insights, AWS, Memory Dump and Cloud Foundry modules.",
+    "resolution": "Plan migration off the legacy modules before the Phase 3 rollout.",
+    "rfaNeeded": false
+  },
+  {
+    "id": "ag-unavailable-on-save",
+    "title": "ActiveGate Unavailable on module save",
+    "pattern": "ActiveGate Unavailable",
+    "severity": "info",
+    "rootCause": "The error can surface from a different layer than the module logic, even when the module works.",
+    "resolution": "Broaden the log scope beyond the module's own logs.",
+    "rfaNeeded": false
+  },
+  {
+    "id": "oom",
+    "title": "OutOfMemoryError in the ActiveGate JVM",
+    "pattern": "OutOfMemoryError",
+    "severity": "critical",
+    "rootCause": "Heap exhausted. Either undersized for the workload or a leak in an extension or module.",
+    "resolution": "Correlate the OOM timestamps with heap and CPU metrics, review recent extension or version changes, and capture a heap dump before raising -Xmx.",
+    "rfaNeeded": true
+  }
+]
